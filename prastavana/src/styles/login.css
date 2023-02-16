@@ -1,0 +1,12 @@
+#body {
+  background-color: white;
+  padding: 90%;
+}
+
+.registerBttn {
+  color: "blue";
+  cursor: pointer;
+}
+#close {
+  text-align: right;
+}

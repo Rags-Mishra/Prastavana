@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4f738a02.css",
+    "main.js": "/static/js/main.95c214dc.js",
+    "static/js/787.5cb5d258.chunk.js": "/static/js/787.5cb5d258.chunk.js",
+    "static/media/product image.png": "/static/media/product image.ca591d4eb61c8f95084d.png",
+    "static/media/Meragen-BW2e5.woff": "/static/media/Meragen-BW2e5.e95bba86f082ff7d4e61.woff",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/Infinity Symbol.svg": "/static/media/Infinity Symbol.3e540f1da2e6bdbe2c459059d272258b.svg",
+    "static/media/User.svg": "/static/media/User.1f0e33b0f8dabf6d51e8acd3b1ee5269.svg",
+    "index.html": "/index.html",
+    "main.4f738a02.css.map": "/static/css/main.4f738a02.css.map",
+    "main.95c214dc.js.map": "/static/js/main.95c214dc.js.map",
+    "787.5cb5d258.chunk.js.map": "/static/js/787.5cb5d258.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f738a02.css",
+    "static/js/main.95c214dc.js"
+  ]
+}
