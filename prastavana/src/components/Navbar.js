@@ -1,55 +1,98 @@
 import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import InfinitySymbol from "../assets/Infinity Symbol.svg";
-import StyledButton from "./StyledButton";
-import { NavLink } from "react-router-dom";
-import { MDBBtn, MDBModal, MDBContainer } from "mdb-react-ui-kit";
-import Login from "./Login";
+import { Grid, IconButton } from "@mui/material";
+import styled from "styled-components";
 import "../styles/login.css";
+import logo from "../assets/logo2.svg";
+import MenuIcon from "@mui/icons-material/Menu";
+import StyledButton from "./StyledButton";
+import { useNavigate } from "react-router-dom";
+const MenuButton = styled(IconButton)`
+  && {
+    @media (max-width: 600px) {
+      display: block;
+    }
+    display: none;
+  }
+`;
+const MobileGrid = styled(Grid)`
+  && {
+    @media (max-width: 600px) {
+      display: block;
+    }
+    display: none;
+  }
+`;
+const DesktopGrid = styled(Grid)`
+  && {
+    @media (max-width: 600px) {
+      display: none;
+    }
+    display: block;
+  }
+`;
 
 const Navbar = () => {
-  const [staticModal, setStaticModal] = useState(false);
-
-  const toggleShow = () => {
-    setStaticModal(!staticModal);
+  const [open, setOpen] = useState(false);
+  const handleMenu = (open) => {
+    setOpen(open);
   };
-  const home = () => {
-    setStaticModal(false);
-  };
-
+  let navigate = useNavigate();
   return (
     <>
-      <Grid container className="navbar-main-container" md={12} xs={12}>
-        <Grid container className="header-icon-container" md={11} xs={5}>
-          <Grid item className="header-text">
-            Prastavana
+      <Grid container className="navbar-main-container">
+        <Grid container className="navbar-second-container">
+          <MenuButton onClick={() => handleMenu(!open)}>
+            <MenuIcon style={{ color: "white" }} />
+          </MenuButton>
+
+          <Grid className="header-text">Prastavana</Grid>
+          <Grid item className="mobile-login">
+            <StyledButton onClick={() => navigate("/login")}>
+              Login
+            </StyledButton>
           </Grid>
-          <Grid item>
-            <img src={InfinitySymbol} className="header-icon"></img>
-          </Grid>
+          <img src={logo} alt={"logo"} className="logo"></img>
+
+          <DesktopGrid className="button-container">
+            <StyledButton onClick={() => navigate("/login")}>
+              Login
+            </StyledButton>
+            <StyledButton
+              style={{
+                marginLeft: "20%",
+              }}
+              onClick={() => navigate("/register")}
+            >
+              Sign Up
+            </StyledButton>
+          </DesktopGrid>
         </Grid>
-
-        <StyledButton onClick={toggleShow}>Login</StyledButton>
+        {open ? (
+          <>
+            <MobileGrid item className="button-container">
+              <StyledButton
+                style={{
+                  borderRadius: 50,
+                  marginBottom: "50%",
+                  marginLeft: "20%",
+                }}
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </StyledButton>
+              <StyledButton
+                style={{
+                  borderRadius: 50,
+                  marginLeft: "20%",
+                }}
+                onClick={() => navigate("/register")}
+              >
+                Sign Up
+              </StyledButton>
+            </MobileGrid>
+          </>
+        ) : null}
       </Grid>
-
-      <MDBModal
-        staticBackdrop
-        tabIndex="-1"
-        show={staticModal}
-        setShow={setStaticModal}
-      >
-        <MDBContainer className="p-3 my-5 d-flex flex-column w-50" id="body">
-          <p id="close">
-            <MDBBtn
-              className="btn-close"
-              color="none"
-              aria-label="Close"
-              onClick={() => home()}
-            />
-          </p>
-          <Login />
-        </MDBContainer>
-      </MDBModal>
     </>
   );
 };

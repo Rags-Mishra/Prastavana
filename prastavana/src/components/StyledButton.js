@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import Button from "@mui/material/Button";
-
+import { Button } from "@mui/material";
 const StyledButton = styled(Button)`
   && {
-    color:white;
-    font-size:95%;
-    height:80%;
-    align-self:center;
-    font-weight:900;
-    font-family:Meragen-BW2e5;
+    font-weight: bold;
+    color: white;
+    font-size: small;
+    border-radius: 3rem;
+    border-color: white;
+    border-style: solid;
+    border-width: 0.2rem;
   }
 `;
 
