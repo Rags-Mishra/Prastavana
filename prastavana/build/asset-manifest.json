@@ -1,20 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.4f738a02.css",
-    "main.js": "/static/js/main.95c214dc.js",
-    "static/js/787.5cb5d258.chunk.js": "/static/js/787.5cb5d258.chunk.js",
-    "static/media/product image.png": "/static/media/product image.ca591d4eb61c8f95084d.png",
+    "main.css": "/static/css/main.24953a75.css",
+    "main.js": "/static/js/main.a194f7ff.js",
+    "static/js/787.8a97f14c.chunk.js": "/static/js/787.8a97f14c.chunk.js",
+    "static/media/Goodies demo.otf": "/static/media/Goodies demo.4ea45c8667a57716a484.otf",
     "static/media/Meragen-BW2e5.woff": "/static/media/Meragen-BW2e5.e95bba86f082ff7d4e61.woff",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "static/media/Infinity Symbol.svg": "/static/media/Infinity Symbol.3e540f1da2e6bdbe2c459059d272258b.svg",
-    "static/media/User.svg": "/static/media/User.1f0e33b0f8dabf6d51e8acd3b1ee5269.svg",
+    "static/media/Group 1.svg": "/static/media/Group 1.5c6a5cf14b837d056c8b10789331e3fc.svg",
+    "static/media/logo2.svg": "/static/media/logo2.4549260566e269852e3466cbdd383fab.svg",
     "index.html": "/index.html",
-    "main.4f738a02.css.map": "/static/css/main.4f738a02.css.map",
-    "main.95c214dc.js.map": "/static/js/main.95c214dc.js.map",
-    "787.5cb5d258.chunk.js.map": "/static/js/787.5cb5d258.chunk.js.map"
+    "main.24953a75.css.map": "/static/css/main.24953a75.css.map",
+    "main.a194f7ff.js.map": "/static/js/main.a194f7ff.js.map",
+    "787.8a97f14c.chunk.js.map": "/static/js/787.8a97f14c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f738a02.css",
-    "static/js/main.95c214dc.js"
+    "static/css/main.24953a75.css",
+    "static/js/main.a194f7ff.js"
   ]
 }
