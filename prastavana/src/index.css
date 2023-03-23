@@ -129,6 +129,32 @@ code {
 .mobile-login {
   display: none;
 }
+.register-main-container{
+  background-color: transparent;
+  height: 30rem;
+  justify-content: center;
+}
+.register-second-container{
+  background-color: rgb(255, 255, 255);
+  padding-inline: 3%;
+  align-self: center;
+  height: 25rem;
+  border-radius: 1rem;
+  width: 20rem;
+}
+.input-container{
+  background-color: rgb(225, 225, 225);
+  border-radius: 1rem;
+  padding-inline-start: 5%;
+  margin-top: auto;
+}
+
+.register-text{
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  align-self: center;
+}
 @media (max-width: 600px) {
   .home-main-container {
     margin-top: 20%;
