@@ -70,6 +70,7 @@ const Register = () => {
             fontSize: "x-small",
           }}
           fullWidth
+          onClick={()=>navigate('/form')}
         >
           Done
         </StyledButton>
