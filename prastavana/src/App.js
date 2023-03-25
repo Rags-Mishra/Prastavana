@@ -6,21 +6,26 @@ import "./index.css";
 import bars from "../src/assets/Group 1.svg";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import MyLinks from "./screens/MyLinks";
+import AuthState from "./context/auth/AuthState";
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/login" element={<Login />} />
-        </Routes>
-        <footer>
-          <img src={bars} alt={'bars'}style={{ width: "100%" }}></img>
-        </footer>
-      </Router>
+      <AuthState>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/mylinks" element={<MyLinks />} />
+          </Routes>
+          <footer>
+            <img src={bars} alt={"bars"} style={{ width: "100%" }}></img>
+          </footer>
+        </Router>
+      </AuthState>
     </>
   );
 }
