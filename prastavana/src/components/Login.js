@@ -70,32 +70,41 @@ const Register = () => {
             <p className="register-text">Login</p>
           </Grid>
           <Divider style={{ borderBottomWidth: "0.1rem" }} />
-          <TextField
-            id="email"
-            label="Email-id"
-            name="email"
-            type="email"
-            value={email}
-            onChange={onChange}
-            required
-            variant="outlined"
-            fullWidth={true}
-          />
-
-          <TextField
-            id="password"
-            label="Password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={onChange}
-            required
-            inputProps={{
-              minLength: 6,
-            }}
-            variant="outlined"
-            fullWidth={true}
-          />
+          <Grid item className="input-container" style={{ marginTop: "10%" }}>
+            <Input
+              id="email"
+              label="Email-id"
+              name="email"
+              type="email"
+              value={email}
+              onChange={onChange}
+              required
+              variant="outlined"
+              fullWidth={true}
+              disableUnderline
+              placeholder="E-mail"
+              style={{ paddingRight: "5%" }}
+            />
+          </Grid>
+          <Grid item className="input-container" style={{ marginTop: "10%" }}>
+            <Input
+              id="password"
+              label="Password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={onChange}
+              required
+              inputProps={{
+                minLength: 6,
+              }}
+              variant="outlined"
+              fullWidth={true}
+              disableUnderline
+              placeholder="Password"
+              style={{ paddingRight: "5%" }}
+            />
+          </Grid>
 
           <StyledButton
             type="submit"

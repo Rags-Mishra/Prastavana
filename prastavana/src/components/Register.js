@@ -80,58 +80,77 @@ const Register = () => {
             <p className="register-text">SignUp</p>
           </Grid>
           <Divider style={{ borderBottomWidth: "0.1rem" }} />
-          <TextField
-            id="name"
-            label="Name"
-            name="name"
-            value={name}
-            onChange={onChange}
-            required
-            variant="outlined"
-            fullWidth={true}
-          />
-          <TextField
-            id="email"
-            label="Email-id"
-            name="email"
-            type="email"
-            value={email}
-            onChange={onChange}
-            required
-            variant="outlined"
-            fullWidth={true}
-          />
-          <TextField
-            id="password"
-            label="Password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={onChange}
-            required
-            minLength={6}
-            inputProps={{
-              minLength: 6,
-            }}
-            variant="outlined"
-            fullWidth={true}
-          />
-
-          <TextField
-            id="confirm"
-            label="Confirm Password"
-            name="password2"
-            type="password"
-            value={password2}
-            minLength="6"
-            onChange={onChange}
-            required
-            inputProps={{
-              minLength: 6,
-            }}
-            variant="outlined"
-            fullWidth={true}
-          />
+          <Grid item className="input-container" style={{ marginTop: "10%" }}>
+            <Input
+              id="name"
+              label="Name"
+              name="name"
+              value={name}
+              onChange={onChange}
+              required
+              variant="outlined"
+              fullWidth={true}
+              placeholder={"Name"}
+              disableUnderline
+              style={{ paddingRight: "5%" }}
+            />
+          </Grid>
+          <Grid item className="input-container" style={{ marginTop: "10%" }}>
+            <Input
+              id="email"
+              label="Email-id"
+              name="email"
+              type="email"
+              value={email}
+              onChange={onChange}
+              required
+              variant="outlined"
+              fullWidth
+              placeholder={"Email-id"}
+              disableUnderline
+              style={{ paddingRight: "5%" }}
+            />
+          </Grid>
+          <Grid item className="input-container" style={{ marginTop: "10%" }}>
+            <Input
+              id="password"
+              label="Password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={onChange}
+              required
+              minLength={6}
+              inputProps={{
+                minLength: 6,
+              }}
+              variant="outlined"
+              fullWidth={true}
+              placeholder={"Password"}
+              disableUnderline
+              style={{ paddingRight: "5%" }}
+            />
+          </Grid>
+          <Grid item className="input-container" style={{ marginTop: "10%" }}>
+            <Input
+              id="confirm"
+              label="Confirm Password"
+              name="password2"
+              type="password"
+              value={password2}
+              minLength="6"
+              onChange={onChange}
+              required
+              inputProps={{
+                minLength: 6,
+              }}
+              variant="outlined"
+              fullWidth={true}
+              placeholder={"Confirm Password"}
+              disableUnderline
+              style={{ paddingRight: "5%" }}
+            />
+          </Grid>
           <StyledButton
             type="submit"
             style={{
@@ -139,7 +158,7 @@ const Register = () => {
               border: "none",
               borderRadius: "1rem",
               alignSelf: "center",
-
+              marginTop: "10%",
               fontSize: "x-small",
             }}
             fullWidth
