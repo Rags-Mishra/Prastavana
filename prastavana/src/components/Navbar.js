@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Grid, IconButton } from "@mui/material";
 import styled from "styled-components";
-import "../styles/login.css";
 import logo from "../assets/logo2.svg";
 import MenuIcon from "@mui/icons-material/Menu";
 import StyledButton from "./StyledButton";

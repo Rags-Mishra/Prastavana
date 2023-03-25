@@ -142,6 +142,12 @@ code {
   border-radius: 1rem;
   width: 20rem;
 }
+.add-link-second-container {
+  background-color: rgb(255, 255, 255);
+  padding-inline: 3%;
+  align-self: center;
+  border-radius: 1rem;
+}
 .input-container {
   background-color: rgb(225, 225, 225);
   border-radius: 1rem;
@@ -163,7 +169,13 @@ input[type="file"] {
 ::-webkit-file-upload-button {
   display: none;
 }
-
+.add-link-container{
+  margin-top: 3%;
+  border-style:solid;
+  border-color:rgb(214, 214, 214);
+  border-width: 0.1rem;
+  font-size: small;
+}
 @media (max-width: 600px) {
   .home-main-container {
     margin-top: 20%;
@@ -208,4 +220,5 @@ input[type="file"] {
     padding-left: 15%;
     align-self: center;
   }
+  
 }

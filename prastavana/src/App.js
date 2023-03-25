@@ -8,7 +8,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import MyLinks from "./screens/MyLinks";
 import AuthState from "./context/auth/AuthState";
-
+import LinkForm from "./screens/LinkForm";
 function App() {
   return (
     <>
@@ -20,6 +20,8 @@ function App() {
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/mylinks" element={<MyLinks />} />
+            <Route exact path="/LinkForm" element={<LinkForm />} />
+
           </Routes>
           <footer>
             <img src={bars} alt={"bars"} style={{ width: "100%" }}></img>
