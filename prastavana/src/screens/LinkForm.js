@@ -4,19 +4,15 @@ import {
   IconButton,
   Input,
   Card,
-  listItemIconClasses,
 } from "@mui/material";
 import StyledButton from "../components/StyledButton";
-import { Divider } from "@mui/material";
 import {
   AddLinkOutlined,
-  ArrowBack,
-  Camera,
-  CameraAltRounded,
-  Image,
+ 
 } from "@mui/icons-material";
 import AddLink from "../components/AddLink";
 import { useNavigate } from "react-router-dom";
+import '../styles/linkform.css';
 const LinkForm = () => {
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -42,8 +38,8 @@ const LinkForm = () => {
         >
           <Card
             style={{
-              height: "5rem",
-              width: "5rem",
+              height: "4rem",
+              width: "4rem",
               borderRadius: "5rem",
               borderStyle: "dashed",
               borderWidth: 1,
@@ -54,9 +50,9 @@ const LinkForm = () => {
               type="file"
               inputProps={{ accept: "image/*" }}
               disableUnderline
-            ></Input>
+            />
           </Card>
-          <Grid item style={{ marginLeft: "15%" }}>
+          <Grid item style={{marginLeft:'5%'}}>
             <Grid item className="input-container" style={{ marginTop: "5%",borderRadius:0 }}>
               <Input
                 disableUnderline

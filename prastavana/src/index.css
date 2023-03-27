@@ -147,6 +147,7 @@ code {
   padding-inline: 3%;
   align-self: center;
   border-radius: 1rem;
+  width:35%
 }
 .input-container {
   background-color: rgb(225, 225, 225);
@@ -220,5 +221,10 @@ input[type="file"] {
     padding-left: 15%;
     align-self: center;
   }
-  
+  .register-main-container{
+    height: 50rem;
+  }
+  .input-container{
+    width:'1rem'
+  }
 }
