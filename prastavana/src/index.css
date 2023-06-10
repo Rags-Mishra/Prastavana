@@ -129,12 +129,12 @@ code {
 .mobile-login {
   display: none;
 }
-.register-main-container{
+.register-main-container {
   background-color: transparent;
   height: 30rem;
   justify-content: center;
 }
-.register-second-container{
+.register-second-container {
   background-color: rgb(255, 255, 255);
   padding-inline: 3%;
   align-self: center;
@@ -142,18 +142,39 @@ code {
   border-radius: 1rem;
   width: 20rem;
 }
-.input-container{
+.add-link-second-container {
+  background-color: rgb(255, 255, 255);
+  padding-inline: 3%;
+  align-self: center;
+  border-radius: 1rem;
+}
+.input-container {
   background-color: rgb(225, 225, 225);
   border-radius: 1rem;
   padding-inline-start: 5%;
-  margin-top: auto;
+  width:14rem;
 }
 
-.register-text{
+.register-text {
   font-weight: bold;
   font-size: larger;
   text-align: center;
   align-self: center;
+}
+
+input[type="file"] {
+  color: transparent;
+  height: 25rem;
+}
+::-webkit-file-upload-button {
+  display: none;
+}
+.add-link-container{
+  margin-top: 3%;
+  border-style:solid;
+  border-color:rgb(214, 214, 214);
+  border-width: 0.1rem;
+  font-size: small;
 }
 @media (max-width: 600px) {
   .home-main-container {
@@ -199,4 +220,5 @@ code {
     padding-left: 15%;
     align-self: center;
   }
+  
 }

@@ -22,7 +22,7 @@ const Register = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/mylinks");
+      navigate("/LinkForm");
     }
 
     if (error === "User already exists") {

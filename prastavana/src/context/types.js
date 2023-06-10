@@ -13,12 +13,12 @@ export const LOGOUT = "LOGOUT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const GET_USER = "GET_USER";
 export const GET_USERS = "GET_USERS";
-// export const GET_CLIENTRDS = 'GET_CLIENTRDS';
-// export const ADD_CLIENTRD = 'ADD_CLIENTRD';
-// export const DELETE_CLIENTRD = 'DELETE_CLIENTRD';
+export const GET_LINKFORMS = "GET_LINKFORMS";
+export const ADD_LINKFORM = "ADD_LINKFORM";
+export const DELETE_LINKFORM = "DELETE_LINKFORM";
 
-// export const UPDATE_CLIENTRD = ' UPDATE_CLIENTRD';
-// export const FILTER_CLIENTRDS = 'FILTER_CLIENTRDS';
+export const UPDATE_LINKFORM = " UPDATE_LINKFORM";
+export const FILTER_LINKFORMS = "FILTER_LINKFORMS";
 
-// export const CLIENTRD_ERROR = 'CLIENTRD_ERROR';
-// export const CLEAR_CLIENTRDS = 'CLEAR_CLIENTRDS';
+export const LINKFORM_ERROR = "LINKFORM_ERROR";
+export const CLEAR_LINKFORMS = "CLEAR_LINKFORMS";
