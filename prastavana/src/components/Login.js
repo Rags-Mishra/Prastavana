@@ -7,6 +7,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
 import TextField from "@mui/material/TextField";
+import LinkformContext from "../context/linkform/linkformContext";
 
 const Register = () => {
   const authContext = useContext(AuthContext);
@@ -16,9 +17,19 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const linkformContext = useContext(LinkformContext);
+  const { addLinkform, getLinkforms, linkforms, updateLinkform } =
+    linkformContext;
+
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/mylinks");
+      navigate("/linkform");
+      // getLinkforms();
+      // if (linkforms?.links?.length == 0) {
+      //   navigate("/linkform");
+      // } else {
+      //   navigate("/mylinks");
+      // }
     }
 
     if (error === "User already exists") {
