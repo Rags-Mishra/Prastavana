@@ -18,7 +18,7 @@ const Register = () => {
   });
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/MyLinks");
+      navigate("/mylinks");
     }
 
     if (error === "User already exists") {

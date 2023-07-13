@@ -15,13 +15,13 @@ import {
 } from "../types";
 
 let url = "http://localhost:5000";
-
+console.log("url: ",url)
 const AuthState = (props) => {
   const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    user: null,
+    user: localStorage.getItem('user'),
     error: null,
   };
 
@@ -33,7 +33,7 @@ const AuthState = (props) => {
 
     try {
       const res = await axios.get(`${url}/api/auth`);
-
+      console.log("data",res.data)
       dispatch({
         type: USER_LOADED,
         payload: res.data,
@@ -53,12 +53,10 @@ const AuthState = (props) => {
 
     try {
       const res = await axios.post(`${url}/api/users`, formData, config);
-
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
-
       loadUser(res.data?.token);
     } catch (err) {
       alert("User Exists");
