@@ -9,10 +9,12 @@ import Login from "./components/Login";
 import MyLinks from "./screens/MyLinks";
 import AuthState from "./context/auth/AuthState";
 import LinkForm from "./screens/LinkForm";
+import LinkFormState from "./context/linkform/LinkFormState";
 function App() {
   return (
     <>
       <AuthState>
+        <LinkFormState>
         <Router>
           <Navbar/>
           <Routes>
@@ -27,6 +29,8 @@ function App() {
             <img src={bars} alt={"bars"} style={{ width: "100%" }}></img>
           </footer>
         </Router>
+        </LinkFormState>
+       
       </AuthState>
     </>
   );
