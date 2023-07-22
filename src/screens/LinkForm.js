@@ -6,6 +6,7 @@ import {
   Input,
   Button,
   Card,
+  Image,
   Typography,
   Snackbar,
   Alert,
@@ -14,11 +15,17 @@ import StyledButton from "../components/StyledButton";
 import AddIcon from "@mui/icons-material/Add";
 import LinkFormContext from "../context/linkform/linkFormContext";
 import { useNavigate } from "react-router-dom";
+import user from '../assets/User.png';
+import axios from "axios";
 const LinkForm = () => {
+  let url = "http://localhost:5000";
+
   let navigate = useNavigate();
   const linkFormContext = useContext(LinkFormContext);
   const { addlinks } = linkFormContext;
   const [open, setOpen] = useState(false);
+  const [uploading, setUploading] = useState(true);
+  const [imageAlert, setImageAlert] = useState(false);
   const [arr, setArr] = useState([1]);
   const [link, setLink] = useState({
     linkName: "",
@@ -29,7 +36,10 @@ const LinkForm = () => {
     name: "",
     bio: "",
     image: "",
+    cloudinary_id:""
   });
+  const [img,setImg]=useState('');
+
   const handleLinkSubmit = () => {
     if (link.linkName === "" || link.linkURL === "") {
       alert("Can't add empty string");
@@ -45,23 +55,56 @@ const LinkForm = () => {
       [e.target.id]: e.target.value,
     }));
   };
+  const onImgChangePhoto = (e) => {
+    setLinkForm({
+      ...linkform,
+      image: e.target.files[0],
+    });
+    console.log("img: ",e.target.files[0]);
+  };
+  const onUploadPhoto = async () => {
+    // console.log("in here")
+    const formData = new FormData();
+    formData.append("file", linkform.image);
+    let res;
+    linkform.image ? setImageAlert(true) : alert("No file is chosen");
 
-  const { name, bio, image } = linkform;
+    try {
+      {
+        res = await axios.post(`${url}/upload`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+      setUploading(false);
+      setTimeout(() => {
+        setImageAlert(false);
+      }, 2000);
+      console.log("image: ", res.data);
+      const { secure_url,public_id } = res.data;
+      setLinkForm({ ...linkform, image: secure_url,cloudinary_id:public_id });
+      setImg(secure_url)
+    } catch (err) {
+      console.log("Error", err);
+    }
+  };
+  const { name, bio, image,cloudinary_id } = linkform;
   const onSubmit = () => {
     if (name == "" || bio == "" || image == "") {
       alert("Kindly fill all the details");
     } else if (links.length == 0) {
       if (link.linkName === "" || link.linkURL === "") {
         alert("Kindly add atleast one link");
-      } 
-    }
-    else {
-      // addlinks({
-      //   name,
-      //   bio,
-      //   image,
-      //   links,
-      // });
+      }
+    } else {
+      addlinks({
+        name,
+        bio,
+        image,
+        links,
+        cloudinary_id
+      });
       console.log("info: ", linkform, links);
       alert("Links added successfully");
       setLinkForm({ name: "", bio: "", image: "" });
@@ -84,6 +127,17 @@ const LinkForm = () => {
         >
           <Alert severity="success">Link Added</Alert>
         </Snackbar>
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={imageAlert}
+          onClose={() => setImageAlert(false)}
+        >
+          {uploading ? (
+            <Alert severity="info">Image is being uploaded</Alert>
+          ) : (
+            <Alert severity="success">Image uploaded</Alert>
+          )}
+        </Snackbar>
         <Grid
           container
           style={{
@@ -94,25 +148,41 @@ const LinkForm = () => {
             justifyContent: "space-between",
           }}
         >
-          <Card
-            style={{
-              height: "4rem",
-              width: "4rem",
-              borderRadius: "5rem",
-              borderStyle: "dashed",
-              borderWidth: 1,
-              borderColor: "dark grey",
-            }}
-          >
-            <Input
-              type="file"
-              id="image"
-              value={linkform.image}
-              inputProps={{ accept: "image/*" }}
-              disableUnderline
-              onChange={(e) => handleChange(e)}
-            />
-          </Card>
+          <Grid item sx={{ width: { md: "30%", xs: "50%" } }}>
+            <Card
+              style={{
+                height: "4rem",
+                width: "4rem",
+                borderRadius: "5rem",
+                borderStyle: "dashed",
+                borderWidth: 1,
+                borderColor: "dark grey",
+                display:'flex'
+              }}
+            >
+              {linkform?.image !== "" ? (
+                <img src={img} style={{width:'100%'}} alt={user}/>
+              ) : (
+                <Input
+                  type="file"
+                  id="image"
+                  inputProps={{ accept: "image/*" }}
+                  disableUnderline
+                  onChange={(e) => onImgChangePhoto(e)}
+                />
+              )}
+            </Card>
+            {img===''?  <Button
+              onClick={() => onUploadPhoto()}
+              sx={{ padding: 0, color: "#c80078" }}
+            >
+              <Typography sx={{ textTransform: "none", fontSize: 12 }}>
+                Upload Photo
+              </Typography>
+            </Button>:null}
+          
+          </Grid>
+
           <Grid item sx={{ width: { md: "70%", xs: "50%" } }}>
             <Grid
               item
@@ -153,11 +223,29 @@ const LinkForm = () => {
             className="added-link-container"
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <Grid item sx={{backgroundColor:'#FFD130',opacity:'70%',borderTopLeftRadius:'25px',borderTopRightRadius:'25px',textAlign:'center'}}>
+            <Grid
+              item
+              sx={{
+                backgroundColor: "#FFD130",
+                opacity: "70%",
+                borderTopLeftRadius: "25px",
+                borderTopRightRadius: "25px",
+                textAlign: "center",
+              }}
+            >
               <Typography variant="content">{link?.linkName}</Typography>
             </Grid>
-           
-            <Grid item sx={{backgroundColor:'#FFD130',opacity:'70%',borderBottomLeftRadius:'25px',borderBottomRightRadius:'25px',textAlign:'center'}}>
+
+            <Grid
+              item
+              sx={{
+                backgroundColor: "#FFD130",
+                opacity: "70%",
+                borderBottomLeftRadius: "25px",
+                borderBottomRightRadius: "25px",
+                textAlign: "center",
+              }}
+            >
               <Typography variant="content">{link?.linkURL}</Typography>
             </Grid>
           </Grid>
