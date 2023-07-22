@@ -30,12 +30,14 @@ const LinkForm = () => {
     bio: "",
     image: "",
   });
-  const handleLinks = () => {
-    setArr((prevItems) => [...prevItems, prevItems + 1]);
-  };
   const handleLinkSubmit = () => {
-    setLinks((previous) => [...previous, link]);
-    setOpen(true);
+    if (link.linkName === "" || link.linkURL === "") {
+      alert("Can't add empty string");
+    } else {
+      setLinks((previous) => [...previous, link]);
+      setOpen(true);
+      setLink({ linkName: "", linkURL: "" });
+    }
   };
   const handleChange = (e) => {
     setLinkForm((previous) => ({
@@ -49,14 +51,18 @@ const LinkForm = () => {
     if (name == "" || bio == "" || image == "") {
       alert("Kindly fill all the details");
     } else if (links.length == 0) {
-      alert("Kindly add atleast one link");
-    } else {
-      addlinks({
-        name,
-        bio,
-        image,
-        links,
-      });
+      if (link.linkName === "" || link.linkURL === "") {
+        alert("Kindly add atleast one link");
+      } 
+    }
+    else {
+      // addlinks({
+      //   name,
+      //   bio,
+      //   image,
+      //   links,
+      // });
+      console.log("info: ", linkform, links);
       alert("Links added successfully");
       setLinkForm({ name: "", bio: "", image: "" });
       setLinks([]);
@@ -140,60 +146,80 @@ const LinkForm = () => {
             </Grid>
           </Grid>
         </Grid>
-        {arr?.map((arr) => (
+        {links?.map((link) => (
           <Grid
-            key={arr}
+            key={link}
             container
-            className="add-link-container"
+            className="added-link-container"
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <Grid item>
-              <Input
-                id="linkName"
-                placeholder={"Handle Name (My Instagram)"}
-                style={{ fontSize: "small", width: "14rem", marginLeft: "3%" }}
-                disableUnderline
-                onChange={(e) =>
-                  setLink((previous) => ({
-                    ...previous,
-                    [e.target.id]: e.target.value,
-                  }))
-                }
-              />
+            <Grid item sx={{backgroundColor:'#FFD130',opacity:'70%',borderTopLeftRadius:'25px',borderTopRightRadius:'25px',textAlign:'center'}}>
+              <Typography variant="content">{link?.linkName}</Typography>
             </Grid>
-            <Divider />
-            <Grid item>
-              <Input
-                id="linkURL"
-                placeholder={"Handle Link"}
-                style={{ fontSize: "small", width: "14rem", marginLeft: "3%" }}
-                disableUnderline
-                onChange={(e) =>
-                  setLink((previous) => ({
-                    ...previous,
-                    [e.target.id]: e.target.value,
-                  }))
-                }
-              ></Input>
+           
+            <Grid item sx={{backgroundColor:'#FFD130',opacity:'70%',borderBottomLeftRadius:'25px',borderBottomRightRadius:'25px',textAlign:'center'}}>
+              <Typography variant="content">{link?.linkURL}</Typography>
             </Grid>
           </Grid>
         ))}
-        <IconButton
-          onClick={() => handleLinks()}
-          style={{
-            marginTop: "1%",
+
+        <Grid
+          container
+          className="add-link-container"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <Grid item>
+            <Input
+              id="linkName"
+              placeholder={"Handle Name (My Instagram)"}
+              style={{ fontSize: "small", width: "14rem", marginLeft: "3%" }}
+              disableUnderline
+              onChange={(e) =>
+                setLink((previous) => ({
+                  ...previous,
+                  [e.target.id]: e.target.value,
+                }))
+              }
+              value={link.linkName}
+            />
+          </Grid>
+          <Divider />
+          <Grid item>
+            <Input
+              id="linkURL"
+              placeholder={"Handle Link"}
+              style={{ fontSize: "small", width: "14rem", marginLeft: "3%" }}
+              disableUnderline
+              onChange={(e) =>
+                setLink((previous) => ({
+                  ...previous,
+                  [e.target.id]: e.target.value,
+                }))
+              }
+              value={link.linkURL}
+            ></Input>
+          </Grid>
+        </Grid>
+        <Button
+          onClick={() => handleLinkSubmit()}
+          sx={{
             alignSelf: "center",
             border: "solid",
             borderWidth: 1,
+            padding: 0,
+            color: "#c80078",
+            marginTop: "2%",
           }}
         >
-          <AddIcon style={{ fontSize: "small" }} />
-        </IconButton>
-        <Button onClick={() => handleLinkSubmit()}>
-          <Typography variant="content" sx={{ color: "#c80078" }}>
-            Add Links
+          <Typography
+            variant="content"
+            sx={{ textTransform: "none", color: "#c80078" }}
+          >
+            Add Link
           </Typography>
+          <AddIcon style={{ fontSize: "small" }} />
         </Button>
+
         <StyledButton
           type="submit"
           style={{

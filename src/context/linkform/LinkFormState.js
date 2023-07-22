@@ -14,7 +14,6 @@ const LinkFormState = (props) => {
     loading: true,
     error: null,
   };
-  console.log("userinstate: ",JSON.parse(user)._id)
 
   const [state, dispatch] = useReducer(linkFormReducer, initialState);
 

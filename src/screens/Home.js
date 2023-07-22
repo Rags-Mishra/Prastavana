@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { Button, Grid, Input, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
 import EmailIcon from "@mui/icons-material/Email";
+import AuthContext from "../context/auth/authContext";
 const LinkButton = styled(Button)`
   && {
     @media (max-width: 600px) {
@@ -19,7 +20,8 @@ const LinkButton = styled(Button)`
 `;
 const Home = () => {
   let navigate = useNavigate();
-
+  const authContext = useContext(AuthContext);
+  const { token } = authContext;
   return (
     <>
       <div className="home-main-container">
@@ -31,8 +33,12 @@ const Home = () => {
             disableUnderline={true}
             style={{ width: "30%" }}
           ></Input>
-          <LinkButton onClick={() => navigate("/register")}>
-           Get your link
+          <LinkButton
+            onClick={() => {
+              token === null ? navigate("/register") : navigate("/LinkForm");
+            }}
+          >
+            Get your link
           </LinkButton>
         </Grid>
 

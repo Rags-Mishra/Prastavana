@@ -40,7 +40,6 @@ localStorage.setItem('user',JSON.stringify(action.payload));
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null,
         error: action.payload
       };
     case CLEAR_ERRORS:
