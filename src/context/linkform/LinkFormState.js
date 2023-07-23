@@ -4,7 +4,8 @@ import LinkFormContext from "./linkFormContext";
 import linkFormReducer from "./linkFormReducer";
 import { ADD_LINKS_SUCCESS, GET_LINKS, CLEAR_ERRORS } from "../types";
 import AuthContext from "../auth/authContext";
-let url = "http://localhost:5000";
+let url = process.env.REACT_APP_API_URL;
+console.log("url: ",url);
 console.log("url: ", url);
 const LinkFormState = (props) => {
   const authContext=useContext(AuthContext);
@@ -13,10 +14,25 @@ const LinkFormState = (props) => {
     linkform: null,
     loading: true,
     error: null,
+    links:null,
   };
 
   const [state, dispatch] = useReducer(linkFormReducer, initialState);
 
+  //Get links
+  const getLinks=async ()=>{
+    try {
+      const res=await axios.get(`${url}/api/linkform/${JSON.parse(user)._id}`)
+      console.log("links data: ",res.data)
+      dispatch({
+        type:GET_LINKS,
+        payload:res.data,
+      })
+    } catch (error) {
+      alert("No account found")
+      console.log(error);
+    }
+  }
   // Add Links
   const addlinks = async (formData) => {
     const config = {
@@ -44,9 +60,11 @@ const LinkFormState = (props) => {
       value={{
         loading: state.loading,
         linkform: state.linkform,
+        links: state.links,
         error: state.error,
         addlinks,
         clearErrors,
+        getLinks
       }}
     >
       {props.children}

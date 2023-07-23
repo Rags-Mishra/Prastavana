@@ -15,7 +15,7 @@ import StyledButton from "../components/StyledButton";
 import AddIcon from "@mui/icons-material/Add";
 import LinkFormContext from "../context/linkform/linkFormContext";
 import { useNavigate } from "react-router-dom";
-import user from '../assets/User.png';
+import user from "../assets/User.png";
 import axios from "axios";
 const LinkForm = () => {
   let url = "http://localhost:5000";
@@ -36,9 +36,9 @@ const LinkForm = () => {
     name: "",
     bio: "",
     image: "",
-    cloudinary_id:""
+    cloudinary_id: "",
   });
-  const [img,setImg]=useState('');
+  const [img, setImg] = useState("");
 
   const handleLinkSubmit = () => {
     if (link.linkName === "" || link.linkURL === "") {
@@ -60,7 +60,7 @@ const LinkForm = () => {
       ...linkform,
       image: e.target.files[0],
     });
-    console.log("img: ",e.target.files[0]);
+    console.log("img: ", e.target.files[0]);
   };
   const onUploadPhoto = async () => {
     // console.log("in here")
@@ -82,14 +82,14 @@ const LinkForm = () => {
         setImageAlert(false);
       }, 2000);
       console.log("image: ", res.data);
-      const { secure_url,public_id } = res.data;
-      setLinkForm({ ...linkform, image: secure_url,cloudinary_id:public_id });
-      setImg(secure_url)
+      const { secure_url, public_id } = res.data;
+      setLinkForm({ ...linkform, image: secure_url, cloudinary_id: public_id });
+      setImg(secure_url);
     } catch (err) {
       console.log("Error", err);
     }
   };
-  const { name, bio, image,cloudinary_id } = linkform;
+  const { name, bio, image, cloudinary_id } = linkform;
   const onSubmit = () => {
     if (name == "" || bio == "" || image == "") {
       alert("Kindly fill all the details");
@@ -103,12 +103,11 @@ const LinkForm = () => {
         bio,
         image,
         links,
-        cloudinary_id
+        cloudinary_id,
       });
       console.log("info: ", linkform, links);
       alert("Links added successfully");
-      setLinkForm({ name: "", bio: "", image: "" });
-      setLinks([]);
+      navigate('/mylinks');
     }
   };
 
@@ -157,11 +156,11 @@ const LinkForm = () => {
                 borderStyle: "dashed",
                 borderWidth: 1,
                 borderColor: "dark grey",
-                display:'flex'
+                display: "flex",
               }}
             >
               {linkform?.image !== "" ? (
-                <img src={img} style={{width:'100%'}} alt={user}/>
+                <img src={img} style={{ width: "100%" }} alt={user} />
               ) : (
                 <Input
                   type="file"
@@ -172,15 +171,16 @@ const LinkForm = () => {
                 />
               )}
             </Card>
-            {img===''?  <Button
-              onClick={() => onUploadPhoto()}
-              sx={{ padding: 0, color: "#c80078" }}
-            >
-              <Typography sx={{ textTransform: "none", fontSize: 12 }}>
-                Upload Photo
-              </Typography>
-            </Button>:null}
-          
+            {img === "" ? (
+              <Button
+                onClick={() => onUploadPhoto()}
+                sx={{ padding: 0, color: "#c80078" }}
+              >
+                <Typography sx={{ textTransform: "none", fontSize: 12 }}>
+                  Upload Photo
+                </Typography>
+              </Button>
+            ) : null}
           </Grid>
 
           <Grid item sx={{ width: { md: "70%", xs: "50%" } }}>

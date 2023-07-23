@@ -35,7 +35,7 @@ const Home = () => {
           ></Input>
           <LinkButton
             onClick={() => {
-              token === null ? navigate("/register") : navigate("/LinkForm");
+              token === null ? navigate("/register") : navigate("/mylinks");
             }}
           >
             Get your link

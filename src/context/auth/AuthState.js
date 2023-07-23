@@ -14,7 +14,7 @@ import {
   CLEAR_ERRORS,
 } from "../types";
 
-let url = "http://localhost:5000";
+let url = process.env.REACT_APP_API_URL;
 console.log("url: ",url)
 const AuthState = (props) => {
   const initialState = {

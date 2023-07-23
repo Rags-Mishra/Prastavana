@@ -3,6 +3,19 @@
   src: local("Meragen-BW2e5"), url(./assets/Meragen-BW2e5.woff) format("woff");
   font-family: "Goodies demo";
   src: local("Goodies demo"), url(./assets/Goodies\ demo.otf) format("otf");
+ 
+}
+@font-face {
+  font-family: Pacifico-Regular;
+  src: url("./assets/Pacifico-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto Mono;
+  src: url("./assets/Roboto-Mono.ttf");
+}
+@font-face {
+  font-family: Caprasimo-Regular;
+  src: url("./assets/Caprasimo-Regular.ttf");
 }
 body {
   margin: 0;
