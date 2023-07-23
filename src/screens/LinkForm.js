@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import user from "../assets/User.png";
 import axios from "axios";
 const LinkForm = () => {
-  let url = "http://localhost:5000";
+  let url = process.env.REACT_APP_API_URL;
 
   let navigate = useNavigate();
   const linkFormContext = useContext(LinkFormContext);

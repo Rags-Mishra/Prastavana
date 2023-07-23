@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.24953a75.css",
-    "main.js": "/static/js/main.a194f7ff.js",
+    "main.css": "/static/css/main.531dd50f.css",
+    "main.js": "/static/js/main.46ba8096.js",
     "static/js/787.8a97f14c.chunk.js": "/static/js/787.8a97f14c.chunk.js",
+    "static/media/Pacifico-Regular.ttf": "/static/media/Pacifico-Regular.c0d735fc04154e03a691.ttf",
+    "static/media/Roboto-Mono.ttf": "/static/media/Roboto-Mono.e1d699e6544d0dbf6ec7.ttf",
+    "static/media/Caprasimo-Regular.ttf": "/static/media/Caprasimo-Regular.1fb14e3bf85c52709856.ttf",
     "static/media/Goodies demo.otf": "/static/media/Goodies demo.4ea45c8667a57716a484.otf",
     "static/media/Meragen-BW2e5.woff": "/static/media/Meragen-BW2e5.e95bba86f082ff7d4e61.woff",
     "static/media/Group 1.svg": "/static/media/Group 1.5c6a5cf14b837d056c8b10789331e3fc.svg",
-    "static/media/logo2.svg": "/static/media/logo2.4549260566e269852e3466cbdd383fab.svg",
+    "static/media/logo.svg": "/static/media/logo.4549260566e269852e3466cbdd383fab.svg",
     "index.html": "/index.html",
-    "main.24953a75.css.map": "/static/css/main.24953a75.css.map",
-    "main.a194f7ff.js.map": "/static/js/main.a194f7ff.js.map",
+    "main.531dd50f.css.map": "/static/css/main.531dd50f.css.map",
+    "main.46ba8096.js.map": "/static/js/main.46ba8096.js.map",
     "787.8a97f14c.chunk.js.map": "/static/js/787.8a97f14c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.24953a75.css",
-    "static/js/main.a194f7ff.js"
+    "static/css/main.531dd50f.css",
+    "static/js/main.46ba8096.js"
   ]
 }
