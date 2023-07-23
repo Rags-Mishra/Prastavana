@@ -55,7 +55,6 @@ const Navbar = () => {
     logout();
     navigate("/");
     setLoggingout(false);
-
   };
   useEffect(() => {
     console.log("token: ", token);
@@ -78,9 +77,19 @@ const Navbar = () => {
 
           <DesktopGrid className="button-container">
             {token !== null ? (
-              <StyledButton onClick={() => setLoggingout(true)}>
-                Logout
-              </StyledButton>
+              <>
+                <StyledButton onClick={() => setLoggingout(true)}>
+                  Logout
+                </StyledButton>
+                <StyledButton
+                  style={{
+                    marginLeft: "10%",
+                  }}
+                  onClick={() => navigate("/mylinks")}
+                >
+                  My links
+                </StyledButton>
+              </>
             ) : (
               <>
                 <StyledButton onClick={() => navigate("/login")}>
@@ -101,43 +110,55 @@ const Navbar = () => {
         {open ? (
           <>
             <MobileGrid item className="button-container">
-              <StyledButton
-                style={{
-                  borderRadius: 50,
-                  marginBottom: "50%",
-                  marginLeft: "20%",
-                }}
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </StyledButton>
-              <StyledButton
-                style={{
-                  borderRadius: 50,
-                  marginLeft: "20%",
-                }}
-                onClick={() => navigate("/register")}
-              >
-                Sign Up
-              </StyledButton>
+              {token !== null ? (
+                <>
+                  <StyledButton onClick={() => setLoggingout(true)}>
+                    Logout
+                  </StyledButton>
+                  <StyledButton onClick={() => navigate("/mylinks")}>
+                    My links
+                  </StyledButton>
+                </>
+              ) : (
+                <>
+                  <StyledButton
+                    style={{
+                      borderRadius: 50,
+                      marginBottom: "50%",
+                      marginLeft: "20%",
+                    }}
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </StyledButton>
+                  <StyledButton
+                    style={{
+                      borderRadius: 50,
+                      marginLeft: "20%",
+                    }}
+                    onClick={() => navigate("/register")}
+                  >
+                    Sign Up
+                  </StyledButton>
+                </>
+              )}
             </MobileGrid>
-            
           </>
         ) : null}
         <Dialog
-              open={loggingout}
-              keepMounted
-              onClose={handleClose}
-              aria-describedby="alert-dialog-slide-description"
-            >
-              <DialogTitle>{"Are you sure you want to logout?"}</DialogTitle>
-              <DialogActions>
-                <Button onClick={onLogout}>Logout</Button>
-                <Button onClick={handleClose} color="error">
-                  Cancel
-                </Button>
-              </DialogActions>
-            </Dialog>
+          open={loggingout}
+          keepMounted
+          onClose={handleClose}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle>{"Are you sure you want to logout?"}</DialogTitle>
+          <DialogActions>
+            <Button onClick={onLogout}>Logout</Button>
+            <Button onClick={handleClose} color="error">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Grid>
     </>
   );

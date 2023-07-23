@@ -6,26 +6,29 @@ import { Divider } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
+import LinkFormContext from "../context/linkform/linkFormContext";
 import TextField from "@mui/material/TextField";
 
 const Register = () => {
   const authContext = useContext(AuthContext);
+  const linkFormContext = useContext(LinkFormContext);
   const { login, error, clearErrors, isAuthenticated } = authContext;
+  const { getLinks,links } = linkFormContext;
   let navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/LinkForm");
-    }
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate("/LinkForm");
+  //   }
 
-    if (error === "User already exists") {
-      alert("User already exists");
-      clearErrors();
-    }
-  });
+  //   if (error === "User already exists") {
+  //     alert("User already exists");
+  //     clearErrors();
+  //   }
+  // });
 
   const { email, password } = user;
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
@@ -40,6 +43,8 @@ const Register = () => {
         email,
         password,
       });
+      navigate('/')
+
     }
   };
   return (

@@ -20,17 +20,17 @@ const Register = () => {
   });
   const { name, email, password, password2 } = user;
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/LinkForm");
-    }
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate("/LinkForm");
+  //   }
 
-    if (error === "User already exists") {
-      alert("User already exists");
-      clearErrors();
-    }
-    // eslint-disable-next-line
-  }, [isAuthenticated, submitted]);
+  //   if (error === "User already exists") {
+  //     alert("User already exists");
+  //     clearErrors();
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isAuthenticated, submitted]);
   let navigate = useNavigate();
 
   const onChange = (e) => {
@@ -50,6 +50,8 @@ const Register = () => {
         password,
       });
     }
+    navigate('/');
+
     setSubmitted(true);
   };
   return (

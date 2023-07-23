@@ -2,8 +2,11 @@ import { AddLink } from "@mui/icons-material";
 import AuthContext from "../context/auth/authContext";
 import React, { useState, useContext, useEffect } from "react";
 import LinkFormContext from "../context/linkform/linkFormContext";
+import { useNavigate } from "react-router-dom";
 import { Grid, Link, Typography, Button } from "@mui/material";
 const MyLinks = () => {
+  let navigate = useNavigate();
+
   const authContext = useContext(AuthContext);
   const linkFormContext = useContext(LinkFormContext);
   const { links, getLinks } = linkFormContext;
@@ -117,19 +120,41 @@ const MyLinks = () => {
               alignItems: "center",
             }}
           >
-            <Typography sx={{fontSize:16}}>Present your prastavana account</Typography>
+            <Typography sx={{ fontSize: 16 }}>
+              Present your prastavana account
+            </Typography>
             <Link
               href={`https://prastavana.netlify.app/mylinks`}
               sx={{
                 backgroundColor: "#DBD9DA",
                 padding: "2%",
                 color: "#84004F",
-                borderRadius:'25px'
+                borderRadius: "25px",
               }}
             >{`https://prastavana.netlify.app/${links?.name}`}</Link>
           </Grid>
         </Grid>
       )}
+      {links === "" ? (
+        <>
+          <Typography color={"white"}>No account made yet</Typography>
+          <Button
+            style={{
+              backgroundColor: "#c80078",
+              border: "none",
+              borderRadius: "1rem",
+              alignSelf: "center",
+              fontSize: "small",
+              marginBottom: "5%",
+              marginTop: "3%",
+              color: "white",
+            }}
+            onClick={() => navigate("/LinkForm")}
+          >
+            Make your Prastavana account now!
+          </Button>
+        </>
+      ) : null}
     </>
   );
 };
