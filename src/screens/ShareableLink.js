@@ -1,26 +1,22 @@
-import { AddLink } from "@mui/icons-material";
-import AuthContext from "../context/auth/authContext";
 import React, { useState, useContext, useEffect } from "react";
-import LinkFormContext from "../context/linkform/linkFormContext";
 import { useNavigate } from "react-router-dom";
 import { Grid, Link, Typography, Button } from "@mui/material";
-const MyLinks = () => {
+import ShareLinkFormContext from '../context/shareLinkform/shareLinkFormContext';
+const ShareLink = ({setShare}) => {
   let navigate = useNavigate();
-
-  const authContext = useContext(AuthContext);
-  const linkFormContext = useContext(LinkFormContext);
-  const { links, getLinks } = linkFormContext;
-  const { register, error, clearErrors, isAuthenticated, user, token } =
-    authContext;
-  const User = JSON.parse(user);
-  
+  const shareLinkFormContext=useContext(ShareLinkFormContext);
+  const {getLinksToShare,links}=shareLinkFormContext;
+  let params = new URLSearchParams(document.location.search);
+const id = params.get("id"); 
+ console.log("id: ",id)
   useEffect(() => {
-    getLinks();
-  }, []);
-  console.log("links: ", links);
+    setShare(true);
+    getLinksToShare(id)
+  }, [])
+  console.log("links in share: ",links);
   return (
     <>
-      {links && (
+        {links && (
         <Grid
           container
           sx={{
@@ -125,7 +121,7 @@ const MyLinks = () => {
               Present your prastavana account
             </Typography>
             <Link
-              href={`https://prastavana.netlify.app/share?id=${links?.user}`}
+              href={`http://localhost:3000/${links?.name}`}
               sx={{
                 backgroundColor: "#DBD9DA",
                 padding: "2%",
@@ -160,4 +156,4 @@ const MyLinks = () => {
   );
 };
 
-export default MyLinks;
+export default ShareLink;
