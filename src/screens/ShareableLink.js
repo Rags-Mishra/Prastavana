@@ -125,7 +125,7 @@ const id = params.get("id");
           ✨ Make your own prastavana account ✨
           </Typography>
           <Link
-            href={`http://localhost:3000`}
+            href={`https://prastavana.netlify.app`}
             sx={{
               backgroundColor: "#DBD9DA",
               padding: "2%",
