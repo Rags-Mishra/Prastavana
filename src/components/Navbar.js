@@ -8,6 +8,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
@@ -54,6 +56,7 @@ const Navbar = () => {
   const onLogout = () => {
     logout();
     navigate("/");
+    setOpen(false);
     setLoggingout(false);
   };
   useEffect(() => {
@@ -107,44 +110,52 @@ const Navbar = () => {
             )}
           </DesktopGrid>
         </Grid>
-        {open ? (
+        
           <>
-            <MobileGrid item className="button-container">
+            <Menu
+              sx={{ display: { md: "none", xs: "block" } }}
+              open={open}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              onClose={() => setOpen(false)}
+            >
               {token !== null ? (
                 <>
-                  <StyledButton onClick={() => setLoggingout(true)}>
+                  <MenuItem onClick={() => setLoggingout(true)}>
                     Logout
-                  </StyledButton>
-                  <StyledButton onClick={() => navigate("/mylinks")}>
+                  </MenuItem>
+                  <MenuItem onClick={() => (navigate("/mylinks"),setOpen(false))}>
                     My links
-                  </StyledButton>
+                  </MenuItem>
                 </>
               ) : (
                 <>
-                  <StyledButton
+                  <MenuItem
                     style={{
                       borderRadius: 50,
-                      marginBottom: "50%",
-                      marginLeft: "20%",
                     }}
-                    onClick={() => navigate("/login")}
+                    onClick={() => (navigate("/login"),setOpen(false))}
                   >
                     Login
-                  </StyledButton>
-                  <StyledButton
+                  </MenuItem>
+                  <MenuItem
                     style={{
                       borderRadius: 50,
-                      marginLeft: "20%",
                     }}
-                    onClick={() => navigate("/register")}
+                    onClick={() => (navigate("/register"),setOpen(false))}
                   >
                     Sign Up
-                  </StyledButton>
+                  </MenuItem>
                 </>
               )}
-            </MobileGrid>
+            </Menu>
           </>
-        ) : null}
         <Dialog
           open={loggingout}
           keepMounted

@@ -138,6 +138,10 @@ justify-content: space-between;
   justify-content: space-around;
   background-color: white;
 }
+.sharelinks-main-container{
+  background-color:#7f06b855;
+  height: auto;
+}
 .icon-container {
   justify-content: center;
 }
@@ -252,5 +256,8 @@ input[type="file"] {
   .add-link-second-container {
    
     width:50%;
+  }
+  .sharelinks-main-container{
+    height: 100vh;
   }
 }
